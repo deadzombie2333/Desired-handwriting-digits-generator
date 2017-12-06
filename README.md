@@ -12,4 +12,4 @@ DNN part of generator, discriminator and determinator is regulated use dropout a
 
 100 instances per batch, 1000 batches per episode, overall 10 episodes. Generate images after each episode with input as digits 0~9 random shuffles. Image title is the desired digit to display.
 
-![ScreenShot](https://github.com/deadzombie2333/Starcraft2-my_AI/blob/master/Desired-handwriting-digits-generator/Figure_1.png)
+![ScreenShot](Desired-handwriting-digits-generator/Figure_1.png)
