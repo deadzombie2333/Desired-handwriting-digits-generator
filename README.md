@@ -10,3 +10,4 @@ Discriminator and determinator use CNN.
 
 DNN part of generator, discriminator and determinator is regulated use dropout and l1 regulation. Parameters are initialized use xavier initialization with adamoptimizer for minimization.
 
+100 instances per batch, 1000 batches per episode, overall 10 episodes. Generate images after each episode with input as digits 0~9 random shuffles. Image title is the desired digit to display.
