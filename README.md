@@ -12,4 +12,4 @@ DNN part of generator, discriminator and determinator is regulated use dropout a
 
 100 instances per batch, 1000 batches per episode, overall 10 episodes. Generate images after each episode with input as digits 0~9 random shuffles. Image title is the desired digit to display.
 
-![ScreenShot](Desired-handwriting-digits-generator/Figure_1.png)
+![ScreenShot](Digits_generator/Figure_1.png)
