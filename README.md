@@ -12,7 +12,7 @@ DNN part of generator, discriminator and determinator is regulated use dropout a
 
 100 instances per batch, 1000 batches per episode, overall 10 episodes. Generate images after each episode with input as digits 0~9 random shuffles. Image title is the desired digit to display.
 
-![ScreenShot](https://github.com/deadzombie2333/Digits_generator/Figure_1.png)
-![ScreenShot](https://github.com/deadzombie2333/Digits_generator/Figure_3.png)
-![ScreenShot](https://github.com/deadzombie2333/Digits_generator/Figure_7.png)
-![ScreenShot](https://github.com/deadzombie2333/Digits_generator/Figure_10.png)
+![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_1.png)
+![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_3.png)
+![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_7.png)
+![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_10.png)
