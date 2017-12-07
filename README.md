@@ -24,4 +24,7 @@ Training result of generator after 7 episodes:
 Training result of generator after 10 episodes:
 ![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_10.png)
 
+Use same generator, generated "hand writing" digits can be different:
+![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_10_2.png)
+
 With further training, generator generate "hand written" digits that is more and more similar to MNIST data set.
