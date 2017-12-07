@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 import os
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow.contrib.layers import dropout
+from datetime import datetime
+
+now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+logdir = "/temp/run-{}".format(now)
 
 def xavier_init(size):
     in_dim = size[0]
@@ -157,12 +161,30 @@ train_G = tf.train.AdamOptimizer().minimize(G_loss, var_list = theta_G)
 saver = tf.train.Saver() 
 n_episode = 10
 
+dis_summary = tf.summary.scalar("discriminator_loss",DIS_loss_0)
+der_summary = tf.summary.scalar("determinator_loss",DER_loss_0)
+gen_dis_summary = tf.summary.scalar("generator_loss_dis",G_loss_DIS)
+gen_der_summary = tf.summary.scalar("generator_loss_der",G_loss_DER)
+file_writer = tf.summary.FileWriter(logdir, tf.get_default_graph())
+
 with tf.Session() as sess:
   sess.run(tf.global_variables_initializer())
   for episode in range(n_episode):
-    for _ in range(1000):
+    for _ in range(2000):
       batch_x, batch_y = mnist.train.next_batch(100)
       batch_x = batch_x.reshape([-1,28,28,1])
+      
+      if batch_index % 10 == 0:
+        dis_summ = sess.run(dis_summary, feed_dict = {x_input:batch_x, y_input:batch_y, is_training: False})
+        der_summ = sess.run(der_summary, feed_dict = {x_input:batch_x, y_input:batch_y, is_training: False})
+        gen_dis_summ = sess.run(gen_dis_summary, feed_dict = {y_input: batch_y, is_training: False})
+        gen_der_summ = sess.run(gen_der_summary, feed_dict = {y_input: batch_y, is_training: False})
+        step = episode * 20 + batch_index
+        file_writer.add_summary(dis_summ, step)
+        file_writer.add_summary(der_summ, step)
+        file_writer.add_summary(gen_dis_summ, step)
+        file_writer.add_summary(gen_der_summ, step)
+        
       sess.run(train_DIS, feed_dict = {x_input: batch_x, y_input: batch_y, is_training: True})
       sess.run(train_G, feed_dict = {y_input: batch_y, is_training: True})
       sess.run(train_DER, feed_dict = {x_input: batch_x, y_input: batch_y, is_training: True})
@@ -193,3 +215,9 @@ with tf.Session() as sess:
       plt.imshow(samples[i].reshape(28, 28), cmap='Greys_r', interpolation = "nearest")
     plt.show()
   save_path = saver.save(sess,"/tmp/my_gan.ckpt")
+
+file_writer.close()
+
+print("Run the command line:\n" \
+    "--> tensorboard --logdir /temp " \
+    "\nThen open http://0.0.0.0:6006/ into your web browser")
