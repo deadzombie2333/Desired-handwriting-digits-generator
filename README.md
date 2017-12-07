@@ -28,3 +28,10 @@ Use same generator, generated "hand writing" digits can be different:
 ![ScreenShot](https://github.com/deadzombie2333/Digits_generator/blob/master/Figure_10_2.png)
 
 With further training, generator generate "hand written" digits that is more and more similar to MNIST data set.
+
+Note from Tensorboard:
+ * Determinator consistenly learning from MNIST data
+ * Discriminator loss increase because generator performance increase, it then decrease because it is also involve as learning persist
+ * Generator consistently improving, loss represent determinator loss and loss_1 represent discriminotor loss. 
+ * There are still improvement available based on the graph of discriminaotr, ideal discriminator loss would be around 50% which si equal to random guess. 
+ * Early stop of GAN is based on satisfactory image generated.
